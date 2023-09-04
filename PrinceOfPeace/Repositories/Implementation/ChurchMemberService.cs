@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using PrinceOfPeace.Models.Domain;
 using PrinceOfPeace.Models.DTO;
 using PrinceOfPeace.Repositories.Abstract;
@@ -72,6 +73,16 @@ namespace PrinceOfPeace.Repositories.Implementation
             return context.ChurchMembers.Find(id);
         }
 
+        //public IEnumerable<ChurchMember> GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<ChurchMember> GetBySearch()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         public IEnumerable<ChurchMember> GetAll()
         {
             var data = (from churchMember in context.ChurchMembers
@@ -101,38 +112,44 @@ namespace PrinceOfPeace.Repositories.Implementation
                             ServicetypeName = serviceType.ServiceType
                         }).ToList();
             return data;
+
+            //var results = context.ChurchMembers.ToList();
+            //return results;
         }
 
         public IEnumerable<ChurchMember> GetBySearch()
         {
-            var data = (from churchMember in context.ChurchMembers
-                        join occupation in context.Occupations on churchMember.OccupationId equals occupation.Id
-                        join position in context.Positions on churchMember.PositionId equals position.Id
-                        join honorific in context.Honorifics on churchMember.HonorificId equals honorific.Id
-                        join serviceType in context.ServiceTypes on churchMember.ServicetypeId equals serviceType.Id
-                        select new ChurchMember
-                        {
-                            Id = churchMember.Id,
-                            HonorificId = churchMember.HonorificId,
-                            OccupationId = churchMember.OccupationId,
-                            PositionId = churchMember.PositionId,
-                            ServicetypeId = churchMember.ServicetypeId,
-                            Firstname = churchMember.Firstname,
-                            Middlename = churchMember.Middlename,
-                            Lastname = churchMember.Lastname,
-                            Birthday = churchMember.Birthday,
-                            Phone1 = churchMember.Phone1,
-                            Phone2 = churchMember.Phone2,
-                            Email = churchMember.Email,
-                            BoxAddress = churchMember.BoxAddress,
-                            Housenumber = churchMember.Housenumber,
-                            GPSaddress = churchMember.GPSaddress,
-                            HonorificName = honorific.HonorificName,
-                            OccupationName = occupation.Occupation,
-                            PositionName = position.Position,
-                            ServicetypeName = serviceType.ServiceType
-                        }).ToList();
-            return data;
+            //var data = (from churchMember in context.ChurchMembers
+            //            join occupation in context.Occupations on churchMember.OccupationId equals occupation.Id
+            //            join position in context.Positions on churchMember.PositionId equals position.Id
+            //            join honorific in context.Honorifics on churchMember.HonorificId equals honorific.Id
+            //            join serviceType in context.ServiceTypes on churchMember.ServicetypeId equals serviceType.Id
+            //            select new ChurchMember
+            //            {
+            //                Id = churchMember.Id,
+            //                HonorificId = churchMember.HonorificId,
+            //                OccupationId = churchMember.OccupationId,
+            //                PositionId = churchMember.PositionId,
+            //                ServicetypeId = churchMember.ServicetypeId,
+            //                Firstname = churchMember.Firstname,
+            //                Middlename = churchMember.Middlename,
+            //                Lastname = churchMember.Lastname,
+            //                Birthday = churchMember.Birthday,
+            //                Phone1 = churchMember.Phone1,
+            //                Phone2 = churchMember.Phone2,
+            //                Email = churchMember.Email,
+            //                BoxAddress = churchMember.BoxAddress,
+            //                Housenumber = churchMember.Housenumber,
+            //                GPSaddress = churchMember.GPSaddress,
+            //                HonorificName = honorific.HonorificName,
+            //                OccupationName = occupation.Occupation,
+            //                PositionName = position.Position,
+            //                ServicetypeName = serviceType.ServiceType
+            //            }).ToList();
+            //return data;
+
+            var results = context.ChurchMembers.ToList();
+            return results;
         }
 
         public bool Update(ChurchMember model)

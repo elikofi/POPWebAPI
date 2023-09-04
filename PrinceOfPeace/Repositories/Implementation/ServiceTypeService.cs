@@ -27,12 +27,12 @@ namespace PrinceOfPeace.Repositories.Implementation
                 return model;
             }
         }
-
-        public bool Delete(int id)
+            
+        public bool Delete(Guid id)
         {
             try
             {
-                var data = context.ServiceTypes.Find(id);
+                var data = this.FindById(id);
                 if (data == null)
                 {
                     return false;
@@ -47,7 +47,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public ServiceTypes? FindById(int id)
+        public ServiceTypes? FindById(Guid id)
         {
             return context.ServiceTypes.Find(id);
         }

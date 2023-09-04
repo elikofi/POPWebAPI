@@ -11,8 +11,8 @@ using PrinceOfPeace.Models.Domain;
 namespace PrinceOfPeace.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230904085232_First")]
-    partial class First
+    [Migration("20230904184001_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,9 +152,9 @@ namespace PrinceOfPeace.Migrations
 
             modelBuilder.Entity("PrinceOfPeace.Models.DTO.ChurchMember", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateOnly>("Birthday")
                         .HasColumnType("date");
@@ -173,8 +173,8 @@ namespace PrinceOfPeace.Migrations
                     b.Property<string>("GPSaddress")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("HonorificId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("HonorificId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Housenumber")
                         .HasColumnType("longtext");
@@ -190,8 +190,8 @@ namespace PrinceOfPeace.Migrations
                     b.Property<string>("Middlename")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("OccupationId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OccupationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Phone1")
                         .IsRequired()
@@ -200,11 +200,11 @@ namespace PrinceOfPeace.Migrations
                     b.Property<string>("Phone2")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int>("ServicetypeId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ServicetypeId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -213,9 +213,9 @@ namespace PrinceOfPeace.Migrations
 
             modelBuilder.Entity("PrinceOfPeace.Models.DTO.Honorifics", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("HonorificName")
                         .IsRequired()
@@ -228,9 +228,9 @@ namespace PrinceOfPeace.Migrations
 
             modelBuilder.Entity("PrinceOfPeace.Models.DTO.Occupations", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Occupation")
                         .IsRequired()
@@ -243,9 +243,9 @@ namespace PrinceOfPeace.Migrations
 
             modelBuilder.Entity("PrinceOfPeace.Models.DTO.Positions", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Position")
                         .IsRequired()
@@ -258,9 +258,9 @@ namespace PrinceOfPeace.Migrations
 
             modelBuilder.Entity("PrinceOfPeace.Models.DTO.ServiceTypes", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("ServiceType")
                         .IsRequired()

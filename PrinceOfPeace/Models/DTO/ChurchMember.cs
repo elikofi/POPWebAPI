@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
@@ -10,10 +11,10 @@ namespace PrinceOfPeace.Models.DTO
 	public class ChurchMember
 	{
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public int HonorificId { get; set; }
+        public Guid HonorificId { get; set; }
 
         [Required(ErrorMessage = "Enter first name.")]
         [StringLength(15)]
@@ -74,15 +75,15 @@ namespace PrinceOfPeace.Models.DTO
         public string? Phone2 { get; set; }
 
         [Required]
-        public int OccupationId { get; set; }
+        public Guid OccupationId { get; set; }
 
         public string? Email { get; set; }
 
         [Required]
-        public int PositionId { get; set; }
+        public Guid PositionId { get; set; }
 
         [Required]
-        public int ServicetypeId { get; set; }
+        public Guid ServicetypeId { get; set; }
 
         public string? BoxAddress { get; set; }
 

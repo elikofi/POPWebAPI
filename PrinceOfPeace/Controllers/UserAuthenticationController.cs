@@ -30,7 +30,7 @@ namespace PrinceOfPeace.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Ok("Unable to register.");
+                return BadRequest();
             }
             model.Role = "user";
             var result = await service.RegistrationAsync(model);

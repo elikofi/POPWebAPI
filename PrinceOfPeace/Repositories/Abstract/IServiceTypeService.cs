@@ -9,9 +9,9 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         public bool Update(ServiceTypes model);
 
-        public bool Delete(int id);
+        public bool Delete(Guid id);
 
-        ServiceTypes? FindById(int id);
+        ServiceTypes? FindById(Guid id);
 
         public IEnumerable<ServiceTypes> GetAll();
     }

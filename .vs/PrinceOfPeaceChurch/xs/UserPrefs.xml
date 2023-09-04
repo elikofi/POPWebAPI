@@ -1,20 +1,30 @@
 ﻿<Properties StartupConfiguration="{F2BB09BE-EA91-4548-9232-6A8B9DFEE609}|https" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.ItemProperties.PrinceOfPeace PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PrinceOfPeace/Controllers/UserAuthenticationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PrinceOfPeace/Models/DTO/ChurchMember.cs">
     <Files>
-      <File FileName="PrinceOfPeace/Program.cs" Line="16" Column="62" />
-      <File FileName="PrinceOfPeace/Controllers/UserAuthenticationController.cs" Line="14" Column="9" />
+      <File FileName="PrinceOfPeace/Repositories/Implementation/ChurchMemberService.cs" Line="89" Column="107" />
+      <File FileName="PrinceOfPeace/Repositories/Implementation/ServiceTypeService.cs" Line="56" Column="10" />
+      <File FileName="PrinceOfPeace/Controllers/ServiceTypesController.cs" Line="80" Column="18" />
+      <File FileName="PrinceOfPeace/Models/DTO/ChurchMember.cs" Line="37" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="PrinceOfPeaceChurch" expanded="True">
+          <Node name="PrinceOfPeaceChurch">
             <Node name="PrinceOfPeace">
-              <Node name="Controllers" expanded="True">
-                <Node name="UserAuthenticationController.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Domain" expanded="True" />
+                <Node name="DTO" expanded="True" />
+              </Node>
+              <Node name="Repositories" expanded="True">
+                <Node name="Abstract" expanded="True" />
+                <Node name="Implementation" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -6,7 +6,7 @@ namespace PrinceOfPeace.Models.DTO
 	public class Positions
 	{
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
         public string? Position { get; set; }
     }
