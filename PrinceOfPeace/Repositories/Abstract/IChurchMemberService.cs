@@ -9,15 +9,15 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         public bool Update(ChurchMember model);
 
-        public bool Delete(int id);
+        public bool Delete(Guid id);
 
-        ChurchMember? FindById(int id);
+        ChurchMember? FindById(Guid id);
 
         public IEnumerable<ChurchMember> GetAll();
 
         public IEnumerable<ChurchMember> GetBySearch();
 
-        public bool Details(int id);
+        public bool Details(Guid id);
     }
 }
 
