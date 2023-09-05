@@ -29,7 +29,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public bool Delete(int id)
+        public bool Delete(Guid id)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public Positions? FindById(int id)
+        public Positions? FindById(Guid id)
         {
             return context.Positions.Find(id);
         }

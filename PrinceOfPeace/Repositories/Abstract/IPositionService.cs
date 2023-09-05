@@ -9,9 +9,9 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         public bool Update(Positions model);
 
-        public bool Delete(int id);
+        public bool Delete(Guid id);
 
-        Positions? FindById(int id);
+        Positions? FindById(Guid id);
 
         public IEnumerable<Positions> GetAll();
     }

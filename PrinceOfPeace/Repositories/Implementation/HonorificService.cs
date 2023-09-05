@@ -28,7 +28,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public bool Delete(int id)
+        public bool Delete(Guid id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public Honorifics? FindById(int id)
+        public Honorifics? FindById(Guid id)
         {
             return context.Honorifics.Find(id);
         }
