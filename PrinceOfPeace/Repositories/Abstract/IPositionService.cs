@@ -5,11 +5,11 @@ namespace PrinceOfPeace.Repositories.Abstract
 {
 	public interface IPositionService
 	{
-        Task<Positions> Add(Positions model);
+        Task<Status> AddAsync(Positions model);
 
-        public bool Update(Positions model);
+        Task<Status> UpdateAsync(Positions model);
 
-        public bool Delete(Guid id);
+        Task<Status> DeleteAsync(Guid id);
 
         Positions? FindById(Guid id);
 
@@ -17,3 +17,4 @@ namespace PrinceOfPeace.Repositories.Abstract
     }
 }
 
+    

@@ -14,36 +14,72 @@ namespace PrinceOfPeace.Repositories.Implementation
             this.context = context;
         }
 
-        public async Task<Occupations> Add(Occupations model)
+        readonly Status status = new();
+        public async Task<Status> AddAsync(Occupations model)
         {
+
             try
             {
                 await context.Occupations.AddAsync(model);
+                if (context.ServiceTypes.Any(x => x.ServiceType == model.Occupation))
+                {
+                    status.StatusCode = 0;
+                    status.Message = "Occupation already exists.";
+                    return status;
+                }
                 await context.SaveChangesAsync();
-                return model;
+                status.StatusCode = 1;
+                status.Message = "Added new Occupation.";
+                return status;
             }
             catch (Exception)
             {
-                return model;
+                status.StatusCode = 0;
+                status.Message = "Error occured! Couldn't add the service type.";
+                return status;
+            }
+        }
+        public async Task<Status> UpdateAsync(Occupations model)
+        {
+            //var status = new Status();
+            try
+            {
+                context.Occupations.Update(model);
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Updated successfully.";
+                return status;
+            }
+            catch (Exception)
+            {
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
             }
         }
 
-        public bool Delete(Guid id)
+        public async Task<Status> DeleteAsync(Guid id)
         {
             try
             {
-                var result = context.Occupations.Find(id);
-                if (result == null)
+                var data = await context.Occupations.FindAsync(id);
+                if (data == null)
                 {
-                    return false;
+                    status.StatusCode = 0;
+                    status.Message = "Occupation not found.";
+                    return status;
                 }
-                context.Occupations.Remove(result);
-                context.SaveChanges();
-                return true;
+                context.Occupations.Remove(data);
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Occupation deleted successfully.";
+                return status;
             }
             catch (Exception)
             {
-                return false;
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
             }
         }
 
@@ -55,20 +91,6 @@ namespace PrinceOfPeace.Repositories.Implementation
         public IEnumerable<Occupations> GetAll()
         {
             return context.Occupations.ToList();
-        }
-
-        public bool Update(Occupations model)
-        {
-            try
-            {
-                context.Occupations.Update(model);
-                context.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
         }
     }
 }

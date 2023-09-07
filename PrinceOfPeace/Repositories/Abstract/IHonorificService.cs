@@ -5,11 +5,11 @@ namespace PrinceOfPeace.Repositories.Abstract
 {
 	public interface IHonorificService
 	{
-        Task<Honorifics> Add(Honorifics model);
+        Task<Status> AddAsync(Honorifics model);
 
-        public bool Update(Honorifics model);
+        Task<Status> UpdateAsync(Honorifics model);
 
-        public bool Delete(Guid id);
+        Task<Status> DeleteAsync(Guid id);
 
         Honorifics? FindById(Guid id);
 

@@ -72,7 +72,7 @@ namespace PrinceOfPeace.Repositories.Implementation
                 context.ServiceTypes.Remove(data);
                 await context.SaveChangesAsync();
                 status.StatusCode = 1;
-                status.Message = "Service type added successfully.";
+                status.Message = "Service type deleted successfully.";
                 return status;
             }
             catch (Exception)
