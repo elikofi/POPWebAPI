@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using PrinceOfPeace.Models.Domain;
 using PrinceOfPeace.Models.DTO;
 using PrinceOfPeace.Repositories.Abstract;
@@ -13,37 +14,72 @@ namespace PrinceOfPeace.Repositories.Implementation
         {
             this.context = context;
         }
-
-        public async Task<ServiceTypes> Add(ServiceTypes model)
+        readonly Status status = new();
+        public async Task<Status> AddAsync(ServiceTypes model)
         {
+            
             try
             {
                 await context.ServiceTypes.AddAsync(model);
+                if (context.ServiceTypes.Any(x => x.ServiceType == model.ServiceType))
+                {
+                    status.StatusCode = 0;
+                    status.Message = "Service type already exists.";
+                    return status;
+                }
                 await context.SaveChangesAsync();
-                return model;
+                status.StatusCode = 1;
+                status.Message = "Added new Service type.";
+                return status;
             }
             catch (Exception)
             {
-                return model;
+                status.StatusCode = 0;
+                status.Message = "Error occured! Couldn't add the service type.";
+                return status;
             }
         }
-            
-        public bool Delete(Guid id)
+        public async Task<Status> UpdateAsync(ServiceTypes model)
+        {
+            //var status = new Status();
+            try
+            {
+                context.ServiceTypes.Update(model);
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Updated successfully.";
+                return status;
+            }
+            catch (Exception)
+            {
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
+            }
+        }
+
+        public async Task<Status> DeleteAsync(Guid id)
         {
             try
             {
-                var data = this.FindById(id);
+                var data = await context.ServiceTypes.FindAsync(id);
                 if (data == null)
                 {
-                    return false;
+                    status.StatusCode = 0;
+                    status.Message = "Service type not found.";
+                    return status;
                 }
                 context.ServiceTypes.Remove(data);
-                context.SaveChanges();
-                return true;
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Service type added successfully.";
+                return status;
             }
             catch (Exception)
             {
-                return false;
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
             }
         }
 
@@ -57,19 +93,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             return context.ServiceTypes.ToList();
         }
 
-        public bool Update(ServiceTypes model)
-        {
-            try
-            {
-                context.ServiceTypes.Update(model);
-                context.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+
     }
 }
 

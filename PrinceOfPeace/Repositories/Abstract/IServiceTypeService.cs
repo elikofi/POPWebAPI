@@ -5,11 +5,11 @@ namespace PrinceOfPeace.Repositories.Abstract
 {
 	public interface IServiceTypeService
 	{
-        Task<ServiceTypes> Add(ServiceTypes model);
+        Task<Status> AddAsync(ServiceTypes model);
 
-        public bool Update(ServiceTypes model);
+        Task<Status> UpdateAsync(ServiceTypes model);   
 
-        public bool Delete(Guid id);
+        Task<Status> DeleteAsync(Guid id);
 
         ServiceTypes? FindById(Guid id);
 
