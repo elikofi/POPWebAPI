@@ -5,11 +5,11 @@ namespace PrinceOfPeace.Repositories.Abstract
 {
 	public interface IChurchMemberService
 	{
-        Task<ChurchMember> Add(ChurchMember model);
+        Task<Status> AddAsync(ChurchMember model);
 
-        public bool Update(ChurchMember model);
+        Task<Status> UpdateAsync(ChurchMember model);
 
-        public bool Delete(Guid id);
+        Task<Status> DeleteAsync(Guid id);  
 
         ChurchMember? FindById(Guid id);
 
@@ -17,7 +17,7 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         public IEnumerable<ChurchMember> GetBySearch();
 
-        public bool Details(Guid id);
+        Task<Status> DetailsAsync(Guid id); 
     }
 }
 

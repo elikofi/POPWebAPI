@@ -15,56 +15,75 @@ namespace PrinceOfPeace.Repositories.Implementation
             this.context = context;
         }
 
-        public async Task<ChurchMember> Add(ChurchMember model)
+        readonly Status status = new();
+        public async Task<Status> AddAsync(ChurchMember model)
         {
+
             try
             {
                 await context.ChurchMembers.AddAsync(model);
+                if (context.ChurchMembers.Any(x => x.Firstname == model.Firstname))
+                {
+                    if (context.ChurchMembers.Any(x => x.Lastname == model.Lastname))
+                    {
+                        status.StatusCode = 0;
+                        status.Message = "Church member already exists.";
+                        return status;
+                    }
+                    
+                }
                 await context.SaveChangesAsync();
-                return model;
+                status.StatusCode = 1;
+                status.Message = "Added new church member.";
+                return status;
             }
             catch (Exception)
             {
-                return model;
+                status.StatusCode = 0;
+                status.Message = "Error occured! Couldn't add new member.";
+                return status;
             }
         }
-
-        public bool Delete(Guid id)
+        public async Task<Status> UpdateAsync(ChurchMember model)
         {
             try
             {
-                var data = context.ChurchMembers.Find(id);
-                if (data != null)
-                {
-                    context.ChurchMembers.Remove(data);
-                    context.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                context.ChurchMembers.Update(model);
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Updated successfully.";
+                return status;
             }
             catch (Exception)
             {
-                return false;
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
             }
         }
 
-        public bool Details(Guid id)
+        public async Task<Status> DeleteAsync(Guid id)
         {
             try
             {
-                var result = this.FindById(id);
-                if (result == null)
+                var data = await context.ChurchMembers.FindAsync(id);
+                if (data == null)
                 {
-                    return false;
+                    status.StatusCode = 0;
+                    status.Message = "Church member not found.";
+                    return status;
                 }
-                return true;
+                context.ChurchMembers.Remove(data);
+                await context.SaveChangesAsync();
+                status.StatusCode = 1;
+                status.Message = "Member deleted successfully.";
+                return status;
             }
             catch (Exception)
             {
-                return false;
+                status.StatusCode = 0;
+                status.Message = "Error occured.";
+                return status;
             }
         }
 
@@ -138,18 +157,19 @@ namespace PrinceOfPeace.Repositories.Implementation
             return data;
         }
 
-        public bool Update(ChurchMember model)
+        public async Task<Status> DetailsAsync(Guid id)
         {
-            try
+            var result = await context.ChurchMembers.FindAsync(id);
+            if (result != null)
             {
-                context.ChurchMembers.Update(model);
-                context.SaveChanges();
-                return true;
+                status.StatusCode = 1;
+                status.Message = "Details";
+                return status;
             }
-            catch (Exception)
-            {
-                return false;
-            }
+
+            status.StatusCode = 0;
+            status.Message = "Bad request";
+            return status;
         }
     }
 }
