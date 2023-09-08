@@ -61,8 +61,12 @@ namespace PrinceOfPeace.Controllers
 
             try
             {
-                var result = await churchMemberService.Add(model);
-                return Ok(result);
+                var result = await churchMemberService.AddAsync(model);
+                if (result.StatusCode == 1)
+                {
+                    return Ok(result);
+                }
+                return BadRequest();
             }
             catch (Exception)
             {
