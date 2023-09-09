@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using PrinceOfPeace.Models.Domain;
 using PrinceOfPeace.Models.DTO;
 using PrinceOfPeace.Repositories.Abstract;
@@ -22,15 +23,11 @@ namespace PrinceOfPeace.Repositories.Implementation
             try
             {
                 await context.ChurchMembers.AddAsync(model);
-                if (context.ChurchMembers.Any(x => x.Firstname == model.Firstname))
+                if (context.ChurchMembers.Any(x => x.Firstname == model.Firstname && x.Lastname == model.Lastname && x.Birthday == model.Birthday))
                 {
-                    if (context.ChurchMembers.Any(x => x.Lastname == model.Lastname))
-                    {
-                        status.StatusCode = 0;
-                        status.Message = "Church member already exists.";
-                        return status;
-                    }
-                    
+                    status.StatusCode = 0;
+                    status.Message = "Church member already exists.";
+                    return status;
                 }
                 await context.SaveChangesAsync();
                 status.StatusCode = 1;
