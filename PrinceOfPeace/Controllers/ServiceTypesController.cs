@@ -60,7 +60,6 @@ namespace PrinceOfPeace.Controllers
             {
                 return BadRequest();
             }
-
             var result = await service.UpdateAsync(model);
             if (result.StatusCode == 1)
             {
@@ -97,7 +96,7 @@ namespace PrinceOfPeace.Controllers
         [Route("FindById")]
         public IActionResult FindById(Guid id)
         {
-            var result = service.FindById(id);
+            var result = service.Find(id);
             return Ok(result);
         }
     }

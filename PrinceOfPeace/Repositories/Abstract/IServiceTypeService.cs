@@ -11,7 +11,7 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         Task<Status> DeleteAsync(Guid id);
 
-        ServiceTypes? FindById(Guid id);
+        ServiceTypes? Find(Guid id);
 
         public IEnumerable<ServiceTypes> GetAll();
     }

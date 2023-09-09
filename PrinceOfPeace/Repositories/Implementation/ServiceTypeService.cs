@@ -41,9 +41,9 @@ namespace PrinceOfPeace.Repositories.Implementation
         }
         public async Task<Status> UpdateAsync(ServiceTypes model)
         {
-            //var status = new Status();
             try
             {
+
                 context.ServiceTypes.Update(model);
                 await context.SaveChangesAsync();
                 status.StatusCode = 1;
@@ -83,7 +83,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
-        public ServiceTypes? FindById(Guid id)
+        public ServiceTypes? Find(Guid id)
         {
             return context.ServiceTypes.Find(id);
         }
