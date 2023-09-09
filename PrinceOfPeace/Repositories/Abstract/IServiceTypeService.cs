@@ -9,7 +9,7 @@ namespace PrinceOfPeace.Repositories.Abstract
 
         Task<Status> UpdateAsync(ServiceTypes model);   
 
-        Task<Status> DeleteAsync(Guid id);
+        Task<Status> DeleteAsync(Guid id);  
 
         ServiceTypes? Find(Guid id);
 

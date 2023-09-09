@@ -74,6 +74,25 @@ namespace PrinceOfPeace.Controllers
             }
 
         }
+        [HttpPost]
+        [Route("{id:guid}")]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, ChurchMember model)
+        {
+            try
+            {
+                var result = await churchMemberService.UpdateAsync(model);
+                if (result.StatusCode == 1)
+                {
+                    return Ok(result);
+                }
+                return BadRequest();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }
 
