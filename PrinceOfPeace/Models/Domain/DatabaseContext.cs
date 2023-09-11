@@ -21,6 +21,8 @@ namespace PrinceOfPeace.Models.Domain
         public DbSet<ServiceTypes> ServiceTypes { get; set; }
 
         public DbSet<ChurchMember> ChurchMembers { get; set; }
+
+        public DbSet<ImageEntity> Images { get; set; }
     }
 }
 
