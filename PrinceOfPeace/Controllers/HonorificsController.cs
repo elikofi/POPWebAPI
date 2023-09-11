@@ -23,8 +23,7 @@ namespace PrinceOfPeace.Controllers
             this.service = service;
         }
 
-        //Add method
-
+        //Add honorifics or title method
         [HttpPost]
         [Route("Add")]
         [Authorize(Roles = "admin")]
@@ -50,6 +49,7 @@ namespace PrinceOfPeace.Controllers
         }
 
 
+        //Update honorific method
         [HttpPost]
         [Route("{id:guid}")]
         [Authorize(Roles = "admin")]
@@ -68,7 +68,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Delete
+
+        //Delete honorific method
         [HttpDelete]
         [Route("Delete")]
         [Authorize(Roles = "admin")]
@@ -82,7 +83,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Get all the list
+
+        //Get complete list of honorifics
         [HttpGet]
         [Route("GetAll")]
         [Authorize(Roles = "admin")]
@@ -92,6 +94,8 @@ namespace PrinceOfPeace.Controllers
             return Ok(data);
         }
 
+
+        //Find honorific or title using the ID
         [HttpGet]
         [Route("FindById")]
         public IActionResult FindById(Guid id)

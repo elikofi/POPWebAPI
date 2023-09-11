@@ -21,6 +21,7 @@ namespace PrinceOfPeace.Controllers
             _context = context;
         }
 
+        //Adding image of church member
         [HttpPost]
         public async Task<IActionResult> UploadImage([FromBody] ImageEntity imageEntity)
         {
@@ -29,6 +30,7 @@ namespace PrinceOfPeace.Controllers
             return Ok(imageEntity.Id);
         }
 
+        //Getting the image of a church member
         [HttpGet("{id}")]
         public IActionResult GetImage(Guid id)
         {

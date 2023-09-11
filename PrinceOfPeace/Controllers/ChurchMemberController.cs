@@ -34,7 +34,7 @@ namespace PrinceOfPeace.Controllers
             //_webHostEnvironment = webHostEnvironment;
         }
 
-
+        //Add church member method
         [HttpPost]
         [Route("Add")]
         [Authorize(Roles = "admin")]
@@ -74,6 +74,9 @@ namespace PrinceOfPeace.Controllers
             }
 
         }
+
+
+        //Update church member
         [HttpPost]
         [Route("{id:guid}")]
         [Authorize(Roles = "admin")]
@@ -96,7 +99,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Delete
+
+        //Delete church member
         [HttpDelete]
         [Route("Delete")]
         [Authorize(Roles = "admin")]
@@ -110,7 +114,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Get all the list
+
+        //Get complete list of church members
         [HttpGet]
         [Route("GetAll")]
         [Authorize(Roles = "admin")]
@@ -121,7 +126,7 @@ namespace PrinceOfPeace.Controllers
         }
 
 
-        //Find by ID
+        //Find a church member using the ID
         [HttpGet]
         [Route("FindById")]
         public IActionResult FindById(Guid id)
@@ -130,7 +135,7 @@ namespace PrinceOfPeace.Controllers
             return Ok(result);
         }
 
-        //Searching for church member
+        //Searching for church member using the first name of the church member
         [HttpGet("searchQuery")]
         public IActionResult GetBySearch(string searchQuery)
         {

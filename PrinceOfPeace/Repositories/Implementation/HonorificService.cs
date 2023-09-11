@@ -15,6 +15,8 @@ namespace PrinceOfPeace.Repositories.Implementation
         }
 
         readonly Status status = new();
+
+        //Add 
         public async Task<Status> AddAsync(Honorifics model)
         {
 
@@ -39,6 +41,8 @@ namespace PrinceOfPeace.Repositories.Implementation
                 return status;
             }
         }
+
+        //Update
         public async Task<Status> UpdateAsync(Honorifics model)
         {
             try
@@ -57,6 +61,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Delete
         public async Task<Status> DeleteAsync(Guid id)
         {
             try
@@ -82,11 +87,13 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Find
         public Honorifics? FindById(Guid id)
         {
             return context.Honorifics.Find(id);
         }
 
+        //Get all
         public IEnumerable<Honorifics> GetAll()
         {
             return context.Honorifics.ToList();

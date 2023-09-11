@@ -12,6 +12,7 @@ namespace PrinceOfPeace.Models.Domain
 
         }
 
+        // Tables in database
         public DbSet<Honorifics> Honorifics { get; set; }
 
         public DbSet<Occupations> Occupations { get; set; }

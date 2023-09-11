@@ -79,7 +79,7 @@ namespace PrinceOfPeace.Repositories.Implementation
         }
 
 
-        //LOGIN
+        //Logout
         public async Task LogoutAsync()
         {
             await signInManager.SignOutAsync();

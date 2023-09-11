@@ -23,8 +23,8 @@ namespace PrinceOfPeace.Controllers
             this.service = service;
         }
 
-        //Add method
-        
+
+        //Add service type method        
         [HttpPost]
         [Route("Add")]
         [Authorize(Roles = "admin")]
@@ -50,7 +50,7 @@ namespace PrinceOfPeace.Controllers
         }
 
 
-
+        //Update service type method
         [HttpPost]
         [Route("{id:guid}")]
         [Authorize(Roles = "admin")]
@@ -69,7 +69,9 @@ namespace PrinceOfPeace.Controllers
             
             return BadRequest();
         }
-        //Delete
+
+
+        //Delete service type method
         [HttpDelete]
         [Route("Delete")]
         [Authorize(Roles = "admin")]
@@ -83,7 +85,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Get all the list
+
+        //Get complete list of all service types.
         [HttpGet]
         [Route("GetAll")]
         [Authorize(Roles = "admin")]
@@ -93,6 +96,8 @@ namespace PrinceOfPeace.Controllers
             return Ok(data);
         }
 
+
+        //Find service type using the ID
         [HttpGet]
         [Route("FindById")]
         public IActionResult FindById(Guid id)

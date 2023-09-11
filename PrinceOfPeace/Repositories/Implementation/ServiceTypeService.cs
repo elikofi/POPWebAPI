@@ -15,6 +15,8 @@ namespace PrinceOfPeace.Repositories.Implementation
             this.context = context;
         }
         readonly Status status = new();
+
+        //Add method for the service type
         public async Task<Status> AddAsync(ServiceTypes model)
         {
             
@@ -39,6 +41,8 @@ namespace PrinceOfPeace.Repositories.Implementation
                 return status;
             }
         }
+
+        // Update method for the service type
         public async Task<Status> UpdateAsync(ServiceTypes model)
         {
             try
@@ -58,6 +62,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Delete method
         public async Task<Status> DeleteAsync(Guid id)
         {
             try
@@ -83,11 +88,13 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Find
         public ServiceTypes? Find(Guid id)
         {
             return context.ServiceTypes.Find(id);
         }
 
+        //Get all
         public IEnumerable<ServiceTypes> GetAll()
         {
             return context.ServiceTypes.ToList();

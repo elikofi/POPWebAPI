@@ -24,6 +24,7 @@ namespace PrinceOfPeace.Controllers
 
         
 
+        //Registering a new user who wouldn't be an admin.
         [HttpPost]
         [Route("Registration")]
         public async Task<IActionResult> Registration(RegistrationModel model)
@@ -39,8 +40,7 @@ namespace PrinceOfPeace.Controllers
         }
 
 
-        //LOGIN
-
+        //Login method
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginModel model)
@@ -51,22 +51,18 @@ namespace PrinceOfPeace.Controllers
             }
 
             var result = await service.LoginAsync(model);
-            //if login is successful, we go to the index method of the dashboard controller
             if (result.StatusCode == 1)
             {
-                //return RedirectToAction("Index", "Dashboard");
                 return Ok("Login successful.");
             }
             else
             {
-                //if login is unsuccessful, then we return to the login page and display message.
-
                 return NotFound();
             }
         }
 
-        ////LOGOUT
 
+        //Logout
         [Authorize]
         [HttpPost]
         [Route("Logout")]
@@ -79,7 +75,7 @@ namespace PrinceOfPeace.Controllers
 
 
 
-
+        //This method is deactivated on purpose
 
 
 

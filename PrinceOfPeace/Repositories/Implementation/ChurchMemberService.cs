@@ -17,6 +17,8 @@ namespace PrinceOfPeace.Repositories.Implementation
         }
 
         readonly Status status = new();
+
+        //Add
         public async Task<Status> AddAsync(ChurchMember model)
         {
 
@@ -41,6 +43,8 @@ namespace PrinceOfPeace.Repositories.Implementation
                 return status;
             }
         }
+
+        //Update
         public async Task<Status> UpdateAsync(ChurchMember model)
         {
             try
@@ -59,6 +63,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Delete
         public async Task<Status> DeleteAsync(Guid id)
         {
             try
@@ -84,12 +89,14 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Find
         public ChurchMember? FindById(Guid id)
         {
             return context.ChurchMembers.Find(id);
         }
 
 
+        //Joining all tables to get all members
         public IEnumerable<ChurchMember> GetAll()
         {
             var data = (from churchMember in context.ChurchMembers
@@ -124,6 +131,7 @@ namespace PrinceOfPeace.Repositories.Implementation
 
         }
 
+        //Joining all table to get a specific member
         public IEnumerable<ChurchMember> GetBySearch()
         {
             var data = (from churchMember in context.ChurchMembers
@@ -158,6 +166,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             return data;
         }
 
+        //Details
         public async Task<Status> DetailsAsync(Guid id)
         {
             var result = await context.ChurchMembers.FindAsync(id);

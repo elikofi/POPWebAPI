@@ -26,11 +26,7 @@ namespace PrinceOfPeace.Models.DTO
         [StringLength(15)]
         public string? Lastname { get; set; }
 
-        //[Required(ErrorMessage = "Enter date of birth.")]
-        //public DateOnly Birthday { get; set; }
-
-
-        //starting test
+        // getting the birthday and then calculating the age
         private DateOnly birthday;
 
         public DateOnly Birthday
@@ -63,7 +59,6 @@ namespace PrinceOfPeace.Models.DTO
             }
         }
 
-        //ending test
 
         [Required(ErrorMessage = "Enter a mobile number.")]
         [Phone]
@@ -93,7 +88,6 @@ namespace PrinceOfPeace.Models.DTO
 
         [ValidateNever]
         [DisplayName("Upload picture")]
-        //public string? ImageUrl { get; set; }
         public Guid ImageId { get; set; }   
 
         //Not mapped properties

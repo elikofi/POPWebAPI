@@ -15,6 +15,8 @@ namespace PrinceOfPeace.Repositories.Implementation
         }
 
         readonly Status status = new();
+
+        //Add method
         public async Task<Status> AddAsync(Positions model)
         {
 
@@ -39,9 +41,10 @@ namespace PrinceOfPeace.Repositories.Implementation
                 return status;
             }
         }
+
+        //Update method
         public async Task<Status> UpdateAsync(Positions model)
         {
-            //var status = new Status();
             try
             {
                 context.Positions.Update(model);
@@ -58,6 +61,7 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Delete
         public async Task<Status> DeleteAsync(Guid id)
         {
             try
@@ -83,11 +87,13 @@ namespace PrinceOfPeace.Repositories.Implementation
             }
         }
 
+        //Find
         public Positions? FindById(Guid id)
         {
             return context.Positions.Find(id);
         }
 
+        //Get all
         public IEnumerable<Positions> GetAll()
         {
             return context.Positions.ToList();

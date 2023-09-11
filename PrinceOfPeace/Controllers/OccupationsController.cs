@@ -23,8 +23,8 @@ namespace PrinceOfPeace.Controllers
             this.service = service;
         }
 
-        //Add method
 
+        //Add occupation method
         [HttpPost]
         [Route("Add")]
         [Authorize(Roles = "admin")]
@@ -50,6 +50,7 @@ namespace PrinceOfPeace.Controllers
         }
 
 
+        //Update occupation method
         [HttpPost]
         [Route("{id:guid}")]
         [Authorize(Roles = "admin")]
@@ -69,7 +70,8 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Delete
+
+        //Delete occupation method
         [HttpDelete]
         [Route("Delete")]
         [Authorize(Roles = "admin")]
@@ -83,7 +85,7 @@ namespace PrinceOfPeace.Controllers
             return BadRequest();
         }
 
-        //Get all the list
+        //Get complete list of all occupations
         [HttpGet]
         [Route("GetAll")]
         [Authorize(Roles = "admin")]
@@ -93,6 +95,7 @@ namespace PrinceOfPeace.Controllers
             return Ok(data);
         }
 
+        //Find occupation using the ID
         [HttpGet]
         [Route("FindById")]
         public IActionResult FindById(Guid id)
