@@ -1,25 +1,28 @@
-﻿<Properties StartupConfiguration="{F2BB09BE-EA91-4548-9232-6A8B9DFEE609}|https" GitUserInfo="UsingGIT">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F2BB09BE-EA91-4548-9232-6A8B9DFEE609}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.PrinceOfPeace PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PrinceOfPeace/Repositories/Implementation/ChurchMemberService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PrinceOfPeace/Controllers/ServiceTypesController.cs">
     <Files>
-      <File FileName="PrinceOfPeace/Repositories/Implementation/HonorificService.cs" />
-      <File FileName="PrinceOfPeace/Repositories/Implementation/ChurchMemberService.cs" Line="48" Column="53" />
-      <File FileName="PrinceOfPeace/Controllers/ChurchMemberController.cs" Line="36" Column="1" />
-      <File FileName="PrinceOfPeace/Repositories/Abstract/IPositionService.cs" NotebookId="1" />
-      <File FileName="PrinceOfPeace/Repositories/Implementation/ServiceTypeService.cs" NotebookId="1" />
-      <File FileName="PrinceOfPeace/Controllers/ServiceTypesController.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="PrinceOfPeace/Controllers/ChurchMemberController.cs" Line="75" Column="1" />
+      <File FileName="PrinceOfPeace/Repositories/Implementation/OccupationService.cs" Line="43" Column="10" />
+      <File FileName="PrinceOfPeace/Controllers/OccupationsController.cs" Line="1" Column="1" />
+      <File FileName="PrinceOfPeace/Repositories/Implementation/ServiceTypeService.cs" Line="58" Column="14" NotebookId="1" />
+      <File FileName="PrinceOfPeace/Controllers/ServiceTypesController.cs" Line="50" Column="10" NotebookId="1" />
+      <File FileName="PrinceOfPeace/Repositories/Abstract/IServiceTypeService.cs" Line="20" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PrinceOfPeaceChurch">
-            <Node name="PrinceOfPeace">
+            <Node name="PrinceOfPeace" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Repositories">
-                <Node name="Implementation">
-                  <Node name="ChurchMemberService.cs" selected="True" />
-                </Node>
+              <Node name="Models" expanded="True">
+                <Node name="DTO" expanded="True" />
+              </Node>
+              <Node name="Repositories" expanded="True">
+                <Node name="Abstract" expanded="True" />
+                <Node name="Implementation" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -27,9 +30,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

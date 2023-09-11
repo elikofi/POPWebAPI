@@ -79,19 +79,68 @@ namespace PrinceOfPeace.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromRoute] Guid id, ChurchMember model)
         {
-            try
-            {
-                var result = await churchMemberService.UpdateAsync(model);
-                if (result.StatusCode == 1)
-                {
-                    return Ok(result);
-                }
-                return BadRequest();
-            }
-            catch (Exception)
+            model.HonorificList = honorificService.GetAll().Select(a => new SelectListItem { Text = a.HonorificName, Value = a.Id.ToString(), Selected = a.Id == model.HonorificId }).ToList();
+            model.OccupationList = occupationService.GetAll().Select(a => new SelectListItem { Text = a.Occupation, Value = a.Id.ToString(), Selected = a.Id == model.OccupationId }).ToList();
+            model.PositionList = positionService.GetAll().Select(a => new SelectListItem { Text = a.Position, Value = a.Id.ToString(), Selected = a.Id == model.PositionId }).ToList();
+            model.ServicetypeList = serviceTypeService.GetAll().Select(a => new SelectListItem { Text = a.ServiceType, Value = a.Id.ToString(), Selected = a.Id == model.ServicetypeId }).ToList();
+
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            var result = await churchMemberService.UpdateAsync(model);
+            if (result.StatusCode == 1)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        //Delete
+        [HttpDelete]
+        [Route("Delete")]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> DeleteAsync(Guid id)
+        {
+            var result = await churchMemberService.DeleteAsync(id);
+            if (result.StatusCode == 1)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        //Get all the list
+        [HttpGet]
+        [Route("GetAll")]
+        [Authorize(Roles = "admin")]
+        public IActionResult GetAll()
+        {
+            var data = churchMemberService.GetAll().OrderBy(data => data.Firstname).ToList();
+            return Ok(data);
+        }
+
+
+        //Find by ID
+        [HttpGet]
+        [Route("FindById")]
+        public IActionResult FindById(Guid id)
+        {
+            var result = churchMemberService.FindById(id);
+            return Ok(result);
+        }
+
+        //Searching for church member
+        public IActionResult GetBySearch(string searchQuery)
+        {
+            if (searchQuery != null)
+            {
+                var member = churchMemberService.GetAll().Where(x => x.Firstname.ToLower().Contains(searchQuery.ToLower()));
+                return Ok(member);
+            }
+
+            return BadRequest();
+
         }
     }
 }
