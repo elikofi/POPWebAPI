@@ -131,6 +131,7 @@ namespace PrinceOfPeace.Controllers
         }
 
         //Searching for church member
+        [HttpGet("searchQuery")]
         public IActionResult GetBySearch(string searchQuery)
         {
             if (searchQuery != null)
