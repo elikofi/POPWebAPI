@@ -93,8 +93,8 @@ namespace PrinceOfPeace.Models.DTO
 
         [ValidateNever]
         [DisplayName("Upload picture")]
-        public string? ImageUrl { get; set; }
-
+        //public string? ImageUrl { get; set; }
+        public Guid ImageId { get; set; }   
 
         //Not mapped properties
 
@@ -106,6 +106,9 @@ namespace PrinceOfPeace.Models.DTO
         public string? HonorificName { get; set; }
         [NotMapped]
         public string? ServicetypeName { get; set; }
+        //image
+        [NotMapped]
+        public Byte[]? ImageData { get; set; }  
 
         [NotMapped]
         public List<SelectListItem>? OccupationList { get; set; }

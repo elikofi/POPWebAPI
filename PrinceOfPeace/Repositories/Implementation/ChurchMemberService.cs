@@ -97,6 +97,7 @@ namespace PrinceOfPeace.Repositories.Implementation
                         join position in context.Positions on churchMember.PositionId equals position.Id
                         join honorific in context.Honorifics on churchMember.HonorificId equals honorific.Id
                         join serviceType in context.ServiceTypes on churchMember.ServicetypeId equals serviceType.Id
+                        join imageEntity in context.Images on churchMember.ImageId equals imageEntity.Id
                         select new ChurchMember
                         {
                             Id = churchMember.Id,
@@ -116,7 +117,8 @@ namespace PrinceOfPeace.Repositories.Implementation
                             HonorificName = honorific.HonorificName,
                             OccupationName = occupation.Occupation,
                             PositionName = position.Position,
-                            ServicetypeName = serviceType.ServiceType
+                            ServicetypeName = serviceType.ServiceType,
+                            ImageData = imageEntity.ImageData //images
                         }).ToList();
             return data;
 
@@ -129,6 +131,7 @@ namespace PrinceOfPeace.Repositories.Implementation
                         join position in context.Positions on churchMember.PositionId equals position.Id
                         join honorific in context.Honorifics on churchMember.HonorificId equals honorific.Id
                         join serviceType in context.ServiceTypes on churchMember.ServicetypeId equals serviceType.Id
+                        join imageEntity in context.Images on churchMember.ImageId equals imageEntity.Id
                         select new ChurchMember
                         {
                             Id = churchMember.Id,
@@ -149,7 +152,8 @@ namespace PrinceOfPeace.Repositories.Implementation
                             HonorificName = honorific.HonorificName,
                             OccupationName = occupation.Occupation,
                             PositionName = position.Position,
-                            ServicetypeName = serviceType.ServiceType
+                            ServicetypeName = serviceType.ServiceType,
+                            ImageData = imageEntity.ImageData //images
                         }).ToList();
             return data;
         }
