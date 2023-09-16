@@ -78,7 +78,7 @@ namespace PrinceOfPeace.Repositories.Implementation
                 context.ChurchMembers.Remove(data);
                 await context.SaveChangesAsync();
                 status.StatusCode = 1;
-                status.Message = "Member deleted successfully.";
+                status.Message = "Church member deleted successfully.";
                 return status;
             }
             catch (Exception)
