@@ -25,9 +25,16 @@ namespace PrinceOfPeace.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadImage([FromBody] ImageEntity imageEntity)
         {
-            _context.Images.Add(imageEntity);
-            await _context.SaveChangesAsync();
-            return Ok(imageEntity.Id);
+            try
+            {
+                _context.Images.Add(imageEntity);
+                await _context.SaveChangesAsync();
+                return Ok(imageEntity.Id);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
         //Getting the image of a church member
